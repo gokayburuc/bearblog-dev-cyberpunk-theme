@@ -1,0 +1,485 @@
+/* ============================================================
+   ▚ NEON//GRID — a cyberpunk theme for Bear Blog
+   Palette (from your reference image):
+     yellow  #FFFF00 · deep dark #0A0A2A · red #C41E3A · mint #B2F2BB
+   Fonts: Michroma (headings) + Play (body) — both Turkish-ready
+   Install: Dashboard → Design → Edit theme CSS → paste all → save
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Michroma&family=Play:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+  --color-bg: #070714;
+  --color-bg-2: #0a0a2a;
+  --color-panel: rgba(10, 10, 42, 0.85);
+  --color-yellow: #ffff00;
+  --color-red: #c41e3a;
+  --color-mint: #b2f2bb;
+  --color-cyan: #00f0ff;
+  --color-magenta: #ff2a6d;
+  --color-font: #e8f6ff;
+  --color-font-dim: #8fa3c7;
+  --color-line: rgba(0, 240, 255, 0.35);
+  --font-head: "Michroma", "Play", sans-serif;
+  --font-body: "Play", "Michroma", sans-serif;
+  --glow-y: 0 0 8px rgba(255, 255, 0, 0.55);
+  --glow-c: 0 0 10px rgba(0, 240, 255, 0.55);
+  --glow-r: 0 0 10px rgba(196, 30, 58, 0.6);
+  --clip-hud: polygon(0 0,
+      calc(100% - 14px) 0,
+      100% 14px,
+      100% 100%,
+      14px 100%,
+      0 calc(100% - 14px));
+}
+
+/* ---------- base / body ---------- */
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--color-font);
+  background:
+    linear-gradient(rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+    radial-gradient(ellipse at 20% -10%,
+      rgba(196, 30, 58, 0.22),
+      transparent 55%),
+    radial-gradient(ellipse at 90% 110%,
+      rgba(255, 255, 0, 0.1),
+      transparent 50%),
+    var(--color-bg);
+  background-size:
+    38px 38px,
+    38px 38px,
+    auto,
+    auto,
+    auto;
+  font-size: 1.06rem;
+  line-height: 1.75;
+}
+
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-bg-2);
+}
+
+/* ---------- blog title ---------- */
+.title h1 {
+  font-family: var(--font-head);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-shadow:
+    2px 2px 0 var(--color-red),
+    -2px -2px 0 var(--color-cyan),
+    var(--glow-y);
+}
+
+.title h1 a {
+  color: var(--color-yellow);
+  text-decoration: none;
+}
+
+.title h1 a:hover {
+  color: var(--color-mint);
+  text-shadow: var(--glow-c);
+}
+
+/* ---------- navigation HUD bar ---------- */
+nav {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-panel);
+  clip-path: var(--clip-hud);
+}
+
+nav a {
+  color: var(--color-cyan);
+  text-decoration: none;
+  margin: 0 0.6rem;
+}
+
+nav a:hover {
+  color: var(--color-yellow);
+  text-shadow: var(--glow-y);
+}
+
+/* ---------- brutal headings ---------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--color-yellow);
+  text-shadow:
+    3px 3px 0 var(--color-red),
+    var(--glow-y);
+  border-bottom: 3px solid var(--color-red);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  color: var(--color-cyan);
+  text-shadow:
+    2px 2px 0 var(--color-bg-2),
+    var(--glow-c);
+  padding-left: 0.6rem;
+  border-left: 5px solid var(--color-cyan);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+  color: var(--color-magenta);
+  text-shadow: 1px 1px 0 var(--color-red);
+  border-bottom: 2px dashed var(--color-magenta);
+}
+
+h4 {
+  color: var(--color-mint);
+  text-shadow: 1px 1px 0 var(--color-bg-2);
+}
+
+h4::before {
+  content: "▘ ";
+  color: var(--color-mint);
+}
+
+h5 {
+  color: var(--color-yellow);
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+}
+
+h5::before {
+  content: "▶ ";
+  color: var(--color-red);
+}
+
+h6 {
+  color: var(--color-font-dim);
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+h6::before {
+  content: "// ";
+  color: var(--color-cyan);
+}
+
+/* ---------- vivid inline text ---------- */
+strong,
+b {
+  color: var(--color-yellow);
+  font-weight: 700;
+  text-shadow: var(--glow-y);
+}
+
+em,
+i,
+cite {
+  color: var(--color-magenta);
+  font-style: italic;
+  text-shadow: 0 0 8px rgba(255, 42, 109, 0.5);
+}
+
+mark {
+  background: var(--color-yellow);
+  color: var(--color-bg-2);
+  padding: 0 0.3em;
+  font-weight: 700;
+}
+
+del {
+  color: var(--color-font-dim);
+  text-decoration-color: var(--color-red);
+}
+
+ins {
+  color: var(--color-mint);
+  text-decoration: underline wavy var(--color-mint);
+}
+
+/* ---------- links ---------- */
+a {
+  color: var(--color-cyan);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-line);
+}
+
+a:hover {
+  color: var(--color-yellow);
+  border-bottom: 1px solid var(--color-yellow);
+  text-shadow: var(--glow-y);
+}
+
+/* ---------- HUD blockquotes & callouts ---------- */
+blockquote {
+  position: relative;
+  margin: 1.6rem 0;
+  padding: 1.1rem 1.4rem 1.1rem 2.4rem;
+  background: linear-gradient(120deg,
+      rgba(196, 30, 58, 0.16),
+      rgba(10, 10, 42, 0.6));
+  border: 1px solid var(--color-red);
+  border-left: 4px solid var(--color-red);
+  clip-path: var(--clip-hud);
+  box-shadow:
+    inset 0 0 24px rgba(196, 30, 58, 0.12),
+    0 0 12px rgba(196, 30, 58, 0.25);
+  color: var(--color-font);
+}
+
+blockquote::before {
+  content: "◤ SYS.MSG ▸";
+  position: absolute;
+  top: -0.7em;
+  left: 1rem;
+  font-family: var(--font-head);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--color-yellow);
+  background: var(--color-bg-2);
+  padding: 0 0.5em;
+  text-shadow: var(--glow-y);
+}
+
+blockquote::after {
+  content: "◢";
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.4rem;
+  color: var(--color-red);
+  font-size: 0.8rem;
+}
+
+/* ---------- code ---------- */
+code,
+.code,
+.highlight {
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  font-size: 0.92em;
+  color: var(--color-mint);
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-line);
+  clip-path: var(--clip-hud);
+}
+
+:not(pre)>code {
+  padding: 0.1em 0.4em;
+  color: var(--color-yellow);
+  background: rgba(255, 255, 0, 0.08);
+  box-shadow: none;
+}
+
+pre {
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  border-left: 4px solid var(--color-mint);
+  box-shadow: inset 0 0 20px rgba(178, 242, 187, 0.06);
+}
+
+.highlight .k,
+.highlight .kd,
+.highlight .kn {
+  color: var(--color-magenta);
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2 {
+  color: var(--color-mint);
+}
+
+.highlight .c,
+.highlight .c1 {
+  color: var(--color-font-dim);
+  font-style: italic;
+}
+
+.highlight .nf,
+.highlight .nc {
+  color: var(--color-cyan);
+}
+
+.highlight .mi,
+.highlight .mf {
+  color: var(--color-yellow);
+}
+
+/* ---------- lists ---------- */
+ul li::marker {
+  color: var(--color-yellow);
+  content: "▸ ";
+}
+
+ol li::marker {
+  color: var(--color-cyan);
+  font-family: var(--font-head);
+  font-weight: 700;
+}
+
+li::marker {
+  color: var(--color-yellow);
+}
+
+/* ---------- tables ---------- */
+table {
+  border: 1px solid var(--color-line);
+  border-collapse: collapse;
+  clip-path: var(--clip-hud);
+}
+
+th {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  color: var(--color-bg-2);
+  background: var(--color-yellow);
+  padding: 0.5rem 0.8rem;
+}
+
+td {
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  padding: 0.4rem 0.8rem;
+}
+
+tr:nth-child(even) td {
+  background: rgba(10, 10, 42, 0.7);
+}
+
+/* ---------- horizontal rule: neon divider ---------- */
+hr {
+  border: none;
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+      var(--color-cyan) 0 12px,
+      transparent 12px 20px,
+      var(--color-red) 20px 32px,
+      transparent 32px 40px);
+  box-shadow: var(--glow-c);
+}
+
+/* ---------- images ---------- */
+img {
+  border: 1px solid var(--color-line);
+  clip-path: var(--clip-hud);
+  filter: saturate(1.15) contrast(1.05);
+}
+
+img:hover {
+  filter: saturate(1.4) contrast(1.1);
+}
+
+/* ---------- post list ---------- */
+.blog-posts li {
+  border-left: 3px solid var(--color-red);
+  padding: 0.35rem 0 0.35rem 0.8rem;
+  margin: 0.4rem 0;
+  list-style: none;
+}
+
+.blog-posts li:hover {
+  border-left-color: var(--color-cyan);
+}
+
+.blog-posts a {
+  border-bottom: none;
+}
+
+/* ---------- post meta / footer ---------- */
+time,
+.post-info,
+.blog-posts time {
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-font-dim);
+}
+
+time::before {
+  content: "⏱ ";
+  color: var(--color-cyan);
+}
+
+footer {
+  border-top: 1px dashed var(--color-line);
+  color: var(--color-font-dim);
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: var(--color-cyan);
+}
+
+/* ---------- scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-line);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-red);
+}
+
+/* ---------- pages / misc ---------- */
+.not-found h1 {
+  color: var(--color-red);
+  text-shadow: var(--glow-r);
+}
+
+.subscribe input {
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-line);
+  color: var(--color-font);
+  clip-path: var(--clip-hud);
+  padding: 0.6rem 1rem;
+  font-family: var(--font-body);
+}
+
+.subscribe button {
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--color-red);
+  color: var(--color-yellow);
+  border: none;
+  clip-path: var(--clip-hud);
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  box-shadow: var(--glow-r);
+}
+
+.subscribe button:hover {
+  background: var(--color-yellow);
+  color: var(--color-red);
+}
